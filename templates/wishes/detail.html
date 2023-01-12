@@ -1,0 +1,8 @@
+{% extends 'base.html' %} 
+
+{% block title %}{{ wish.summary }}{% endblock title %}
+
+{% block content %} 
+<h1>Wish # {{ wish.id }}</h1>
+<p><b>Summary: </b>{{ wish.summary }}</p>
+{% endblock content %}

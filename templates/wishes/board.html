@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+
+{% block title %}Wish List{% endblock title %} 
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <hr>
+            <div class ="card card-body">
+                <h3>Traveling Destinations</h3>
+                <a class="btn btn-primary" href="{% url 'new_wish' %}">Add New Destination</a>
+                <table class ="table table-sm">
+                    <tr>
+                        <th>Country</th>
+                        <th>Description</th>
+                    </tr>
+
+                    {% for wish in wish_list %}
+                        <tr>
+                            <td><a href="{% url 'wish_detail' wish.id %}">{{ wish.summary | truncatechars:150 }}</a></td>
+                            <td>{{ wish.description | truncatechars:250 }}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_wish' wish.id %}">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_wish' wish.id %}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
