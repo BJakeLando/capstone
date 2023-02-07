@@ -3,10 +3,21 @@
 {% block title %}Edit Post{% endblock title %}
 
 {% block content %}
-<h1>Edit Post</h1>
-<form method = "POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class ="btn btn-success" value = "Update">
-</form>
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+    <div class ="form-group">
+    <h1>Edit Post</h1>
+        <form method = "POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class ="btn btn-success" value = "Submit">
+        </form>
+    </div>
+    {% else %}
+    You're not allowed here!
+    {% endif %}
+{% else %}
+You are not allowed to edit this post!
+{% endif %}
 {% endblock content %}

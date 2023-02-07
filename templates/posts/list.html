@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Post{% endblock title %} 
 
 {% block content %}
-<h1>Posts</h1>
+<body class="homeBody">
+    
+<div class ="container">
+<h1><u>Posts</u></h1>
 {% for post in post_list %}
     <div class ="card">
         <div class ="card-body">
             <h5 class = "card-title">{{ post.title }}</h5>
-            <small> Created by {{ post.author }} on: {{post.created_on }}</small>
-            <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h6>
-            <p class = "card-text">{{ post.body | truncatechars:500 }}</p>
-            <a href="{% url 'detail' post.id %}" class ="card-link">Continue Reading</a>
+            <h6 class="card-subtitle mb-2">{{ post.subtitle }}</h6>
+            <small> Created by <b>{{ post.author }}</b> on: {{post.created_on }}</small>
+            <p id="postBody" class = "card-text">{{ post.body | truncatechars:500 }}</p>
+            <a href="{% url 'detail' post.id %}" class ="btn btn-info">Continue Reading</a>
+            {% if user.is_authenticated %} 
+                {% if user.id == post.author.id %}
+                <a href="{% url 'edit' post.id %}" class ="btn btn-secondary">Update</a>
+                <a href="{% url 'delete' post.id %}" class ="btn btn-danger">Delete</a>
+                {% endif %} 
+            {% endif %}
         </div>
     </div>
 {% endfor %}
+</div>
+</body>
 {% endblock content %}

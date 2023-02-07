@@ -11,6 +11,7 @@ def populate_status(apps, schemaeditor):
         status_obj = Status(name=key, description=value)
         status_obj.save()
 
+
 class Migration(migrations.Migration):
 
     dependencies = [

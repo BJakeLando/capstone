@@ -1,9 +1,11 @@
 {% extends 'base.html' %} 
+{% load static %}
 
 {% block title %}Wish List{% endblock title %} 
 
 {% block content %}
-
+<body class="homeBody">
+    
 <div class="container">
     <div class="row">
         <div class="col-md-5">
@@ -21,8 +23,12 @@
                         <tr>
                             <td><a href="{% url 'wish_detail' wish.id %}">{{ wish.summary | truncatechars:150 }}</a></td>
                             <td>{{ wish.description | truncatechars:250 }}</td>
-                            <td><a class="btn btn-sm btn-info" href="{% url 'edit_wish' wish.id %}">Update</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_wish' wish.id %}">Delete</a></td>
+                            {% if user.is_authenticated %}
+                                {% if user.id == wish.author.id %}
+                                <td><a class="btn btn-sm btn-info" href="{% url 'edit_wish' wish.id %}">Update</a></td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_wish' wish.id %}">Delete</a></td>
+                                {% endif %}
+                            {% endif %}
                         </tr>
                         {% endfor %}
                 </table>
@@ -30,5 +36,5 @@
         </div>
     </div>
 </div>
-
+</body>
 {% endblock content %}

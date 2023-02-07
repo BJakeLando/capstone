@@ -23,7 +23,7 @@ class PostListView(ListView):
             return context
 
 class DraftPostListView(LoginRequiredMixin, ListView):
-    template_name = 'posts/list./html'
+    template_name = 'posts/list.html'
     model = Post
 
     def get_context_data(self, **kwargs):
@@ -32,11 +32,12 @@ class DraftPostListView(LoginRequiredMixin, ListView):
         context["post_list"] = Post.objects.filter(
             status=status).filter(author=self.request.user).order_by("created_on").reverse()
         return context
-        
 
-class PostDetailView(DetailView):
+
+class PostDetailView(LoginRequiredMixin,DetailView):
     template_name = 'posts/detail.html'
     model = Post
+
 
 class PostNewView(LoginRequiredMixin, CreateView):
     template_name = 'posts/new.html'
@@ -47,7 +48,7 @@ class PostNewView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class PostEditView(LoginRequiredMixin, UpdateView):
     template_name = 'posts/edit.html'
     model = Post
     fields = ['title','subtitle', 'body', "status"]
@@ -56,7 +57,7 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         post_obj = self.get_object()
         return self.request.user == post_obj.author
 
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'posts/delete.html'
     model = Post
     success_url = reverse_lazy('list')

@@ -1,0 +1,30 @@
+
+.navbar {
+    background-color: lightblue;
+}
+
+.card {
+    padding: 15px;
+    margin: 15px;
+    background-color: rgb(95, 93, 93);
+    color: white;
+}
+
+.card-text {
+    padding: 10px;
+    margin: 10px;
+}
+
+posts h1 {
+    text-decoration: underline;
+}
+
+.homeBody {
+    background-color: black;
+    color: white;
+}
+
+.homeTitle {
+    width: 100%;
+    align-items: center;
+}

@@ -2,19 +2,20 @@
 {% load static %}
 
 {% block title %}Home{% endblock title %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
+</head>
 
 {% block content %}
-<h1>DOL Homepage</h1>
-<h3>Weekly Newsletter</h3>
-<body>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
+<h1 class ="homeTitle">Deaf Online Homepage!</h1>
+<h3 class ="weekly">Weekly Newsletter:</h3>
+<body class="homeBody">
 <div class="card" style="width: 50rem;">
     <img src="{% static 'img/news.jpg' %}" style ="height: 20rem;"class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Current events in the Deaf Community.</h5>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="linkBody list-group list-group-flush">
         <li class="list-group-item"><a href="https://nationaldeafnews.com/">National Deaf News</a></li>
         <li class="list-group-item"><a href="https://www.dailymoth.com/blog/category/DEAF+NEWS">Daily Moth</a></li>
         <li class="list-group-item"><a href="https://deafniche.com/category/news/">Deafniche.com</a></li>

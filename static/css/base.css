@@ -1,4 +1,50 @@
 
 .navbar {
-    background-color: blue;
+    background-color: rgb(203, 222, 228);
+}
+
+#postBody {
+    background-color: rgb(3, 160, 98);
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.card {
+    padding: 15px;
+    margin: 2rem auto;
+    background-color: rgb(95, 93, 93);
+    color: white;
+}
+
+.card-text {
+    padding: 10px;
+    margin: 10px;
+}
+
+posts h1 {
+    text-decoration: underline;
+}
+
+.homeBody {
+    background-color: rgb(124, 120, 120);
+    color: white;
+}
+
+.homeTitle {
+    padding: 25px;
+    font-size: 75px;
+    font-family:monospace;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+}
+
+.weekly {
+    padding-left: 250px;
+    color: lightskyblue;
+    font-family: cursive;
+}
+
+.list-group-item {
+    background-color: rgb(201, 198, 198);
 }
