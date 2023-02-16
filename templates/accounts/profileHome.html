@@ -8,50 +8,64 @@
 
 {% block content %}
 <h1 class ="homeTitle">Deaf Online Homepage!</h1>
+
 <h3 class ="weekly">Weekly Newsletter:</h3>
 <body class="homeBody">
-<div class="card" style="width: 50rem;">
-    <img src="{% static 'img/news.jpg' %}" style ="height: 20rem;"class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Current events in the Deaf Community.</h5>
+    <div class="container1 text-center" style="float:left;">
+        <div class="card" >
+            <img src="{% static 'img/news.jpg' %}" style ="height: 20rem;"class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Current events in the Deaf Community.</h5>
+            </div>
+            <ul class="linkBody list-group list-group-flush">
+                <li class="list-group-item"><a href="https://nationaldeafnews.com/">National Deaf News</a></li>
+                <li class="list-group-item"><a href="https://www.dailymoth.com/blog/category/DEAF+NEWS">Daily Moth</a></li>
+                <li class="list-group-item"><a href="https://deafniche.com/category/news/">Deafniche.com</a></li>
+            </ul>
+        </div>
+        <br>    
+        <div class="card row col-8">
+            <img src="{% static 'img/sports.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Sports</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="https://www.espn.com/">ESPN</a></li>
+                <li class="list-group-item"><a href="https://www.espn.com/college-sports/">College Sports</a></li>
+                <li class="list-group-item"><a href="https://www.msn.com/en-us/sports">Sports News</a></li>
+            </ul>
+        </div>
+        <br>
+        <div class="card row col-8">
+            <img src="{% static 'img/education.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Education</h5>
+            </div>
+            <ol class="list-group list-group-flush">
+                <li class="list-group-item"><a href="https://gallaudet.edu/">Galludet University</a></li>
+                <li class="list-group-item"><a href="https://www.rit.edu/ntid/">Rochester Institute of Technology(RIT)</a></li>
+                <li class="list-group-item"><a href="https://howardcollege.edu/library/swcid-library/">Howard College</a></li>
+                <li class="list-group-item"><a href="https://ssd.umich.edu/">University of Michigan</a></li>
+                <li class="list-group-item"><a href="https://osas.usc.edu/">University of Southern California</a></li>
+            </ol>
+        </div>
     </div>
-    <ul class="linkBody list-group list-group-flush">
-        <li class="list-group-item"><a href="https://nationaldeafnews.com/">National Deaf News</a></li>
-        <li class="list-group-item"><a href="https://www.dailymoth.com/blog/category/DEAF+NEWS">Daily Moth</a></li>
-        <li class="list-group-item"><a href="https://deafniche.com/category/news/">Deafniche.com</a></li>
-    </ul>
-</div>
-<br>    
-<div class="card" style="width: 50rem;">
-    <img src="{% static 'img/sports.jpg' %}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Sports</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="https://www.espn.com/">ESPN</a></li>
-        <li class="list-group-item"><a href="https://www.espn.com/college-sports/">College Sports</a></li>
-        <li class="list-group-item"><a href="https://www.msn.com/en-us/sports">Sports News</a></li>
-    </ul>
-</div>
-<br>
-<div class="card" style="width: 50rem;">
-    <img src="{% static 'img/education.jpg' %}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Education</h5>
-    </div>
-    <ol class="list-group list-group-flush">
-        <li class="list-group-item"><a href="https://gallaudet.edu/">Galludet University</a></li>
-        <li class="list-group-item"><a href="https://www.rit.edu/ntid/">Rochester Institute of Technology(RIT)</a></li>
-        <li class="list-group-item"><a href="https://howardcollege.edu/library/swcid-library/">Howard College</a></li>
-        <li class="list-group-item"><a href="https://ssd.umich.edu/">University of Michigan</a></li>
-        <li class="list-group-item"><a href="https://osas.usc.edu/">University of Southern California</a></li>
-    </ol>
-</div>
+        <div id="peeps" class="container2 col-4" style="float:right;">
+            <h3 id="peepTitle">Peeps: </h3><br/><br/>
+            <div class="row">
+                {% for peep in peeps %} 
+                    <div class="alert alert-dark" role="alert">
+                        {{ peep.body }}<br/>
+                        <small class="text-muted">
+                            ({{ peep.created_at }}) </small><br/>
+                            By @{{ peep.user.username }}
+                        </small>
+                    </div>
+                    <br/><br/><br/>
+                {% endfor %}
+                </div>
+        </div>
+
 </body>
 
-<h1>Peeps!</h1>
-
-{% for peep in peeps %} 
-    {{ peep }}<br/><br/>
-{% endfor %}
 {% endblock content %}

@@ -10,9 +10,15 @@
 }
 
 .card {
+    width: 30%;
+    margin: 2rem auto;
     padding: 15px;
+    width:35rem;
     background-color: rgb(95, 93, 93);
     color: white;
+}
+#peeps{
+    align-items: right;
 }
 
 .card-text {
@@ -46,4 +52,35 @@ posts h1 {
 
 .list-group-item {
     background-color: rgb(201, 198, 198);
+}
+
+#profileBody{
+    background-color: rgb(125, 126, 126);
+}
+#bl{
+    font-size: 50px;
+    text-decoration: underline;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+    padding: 50px 50px 50px 450px;
+    color:rgb(222, 231, 228);
+}
+
+#profileBody img{
+    border-radius: 50%;
+}
+#follows{
+    background-color: cadetblue;
+    margin-right: 25px;
+}
+#followed{
+    background-color: cadetblue;
+}
+
+#peepTitle {
+    padding-left: 25px;
+    font-size: 30px;
+    font-family:fantasy;
+    letter-spacing: 1px;
+    color: lightskyblue;
 }

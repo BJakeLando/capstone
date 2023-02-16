@@ -34,8 +34,8 @@
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="{% url 'myProfile' request.user.id %}">My Profile</a>
                 <a class="nav-link active" aria-current="page" href="{% url 'profileHome' %}">Home</a>
-                <a class="nav-link" href="{% url 'list' %}">Posts</a>
-                <a class="nav-link" href="{% url 'profiles' %}">Friends</a>
+                <a class="nav-link" href="{% url 'profiles' %}">Follow</a>
+                <a class="nav-link" href="{% url 'list' %}">Blog</a>
                 <a class="nav-link" href="{% url 'new' %}">New Post</a>
                 <a class="nav-link" href="{% url 'drafts' %}">Drafts</a>
                 <a class="nav-link" href="{% url 'board' %}">Wish List</a>

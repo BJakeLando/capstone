@@ -4,12 +4,24 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render,redirect
 from .models import Profile, Peep
 from django.contrib import messages
-
+from .forms import PeepForm
 
 def profileHome(request):
     if request.user.is_authenticated:
-        peeps = Peep.objects.all()
-    return render(request, 'accounts/profileHome.html', {"peeps": peeps})
+        form = PeepForm(request.POST or None)
+        if request.method == "POST":
+            if form.is_valid():
+                peep = form.save(commit=False)
+                peep.user = request.user
+                peep.save()
+                messages.success(request, ("Your Peep has been posted!"))
+                return redirect('profileHome')
+
+        peeps = Peep.objects.all().order_by("-created_at")
+        return render(request, 'accounts/profileHome.html', {"peeps": peeps, "form": form})
+    else:
+        peeps = Peep.objects.all().order_by("-created_at")
+        return render(request, 'accounts/profileHome.html', {"peeps": peeps})
     
     
 class SignupView(CreateView):
@@ -29,7 +41,16 @@ def profile_list(request):
 def profile(request, pk):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user_id=pk)
-
+        peeps = Peep.objects.filter(user_id=pk).order_by('-created_at')
+        form = PeepForm(request.POST or None)
+        if request.method == "POST":
+                if form.is_valid():
+                    peep = form.save(commit=False)
+                    peep.user = request.user
+                    peep.save()
+                    messages.success(request, ("Your Peep has been posted!"))
+                    return redirect('profiles')
+            
         # Post Form Logic
         if request.method == 'POST':
             current_user_profile = request.user.profile
@@ -42,7 +63,9 @@ def profile(request, pk):
                 current_user_profile.follows.add(profile)
             # Save the profile
             current_user_profile.save()
-        return render(request, "accounts/profile.html", {'profile': profile})
+
+        peeps = Peep.objects.all().order_by("-created_at")
+        return render(request, "accounts/profile.html", {'profile': profile, "peeps": peeps,'form': form})
     else:
         messages.success(request, ("you must be logged in to view this page"))
         return redirect('home')

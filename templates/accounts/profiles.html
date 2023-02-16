@@ -2,14 +2,17 @@
 {% load static %}
 
 {% block content %} 
-    <h1>Friends List</h1>
+    <h1>Other Users</h1>
     <br/>
 {% if profiles %}
     {% for profile in profiles %}
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-            <img src="{% static 'img/profile.jpg' %}" class="card-img" alt="profile image">
+            <img src="{% static 'img/profile.jpg' %}" class="card-img" alt="profile image"><form action=""method="POST" enctype="multipart/form-data">
+                {%csrf_token %}
+                {{ form.as_p }}
+            </form>
             </div>
             <div class="col-md-8">
             <div class="card-body">
