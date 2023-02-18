@@ -22,6 +22,6 @@ class ProfileForm(forms.ModelForm):
         fields = ('user', 'profile_image',)
         labels = {
             'user': '',
-            'profile_image': '',
+            'profile_image': 'add image',
 
         }

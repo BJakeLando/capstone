@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render,redirect
 from .models import Profile, Peep
 from django.contrib import messages
-from .forms import PeepForm
+from .forms import PeepForm, ProfileForm
 
 def profileHome(request):
     if request.user.is_authenticated:
@@ -43,6 +43,7 @@ def profile(request, pk):
         profile = Profile.objects.get(user_id=pk)
         peeps = Peep.objects.filter(user_id=pk).order_by('-created_at')
         form = PeepForm(request.POST or None)
+        
         if request.method == "POST":
                 if form.is_valid():
                     peep = form.save(commit=False)

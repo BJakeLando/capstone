@@ -12,10 +12,17 @@ class Status(models.Model):
     def __str__(self):
         return self.name
 
+class Video(models.Model):
+    name = models.CharField(max_length=500)
+    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="")
+
+    def __str__(self):
+        return str(self.videofile)
+
 class Post(models.Model):
     title = models.CharField(max_length=256)
     subtitle = models.CharField(max_length=256)
-    body = models.TextField()
+    body = models.TextField(max_length=256)
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         get_user_model(),
@@ -32,4 +39,3 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('detail', args = [self.id])
 
-# Create your models here.

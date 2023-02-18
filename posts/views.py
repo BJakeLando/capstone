@@ -10,11 +10,24 @@ from django.contrib.auth.mixins import (
 )
 from django.urls import reverse_lazy
 from .models import Post, Status 
+from .forms import VideoForm
+from .models import Video
+from django.shortcuts import render
+
+
+
+def showvideo(request):
+    lastvideo= Video.objects.last()
+    videofile= lastvideo.videofile
+    form= VideoForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    context= {'videofile': videofile,'form': form}
+    return render(request, 'home.html', context)
 
 class PostListView(ListView):
     template_name = 'posts/list.html'
     model = Post
-            
     def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
             status = Status.objects.get(id=1)
@@ -42,7 +55,8 @@ class PostDetailView(LoginRequiredMixin,DetailView):
 class PostNewView(LoginRequiredMixin, CreateView):
     template_name = 'posts/new.html'
     model = Post
-    fields = ['title', 'subtitle', 'body', "status"]
+    fields = ['title', 'subtitle', 'body', "status",]
+
 
     def form_valid(self, form):
         form.instance.author = self.request.user

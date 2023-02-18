@@ -14,7 +14,13 @@
             <h5 class = "card-title">{{ post.title }}</h5>
             <h6 class="card-subtitle mb-2">{{ post.subtitle }}</h6>
             <small> Created by <b>{{ post.author }}</b> on: {{post.created_on }}</small>
-            <p id="postBody" class = "card-text">{{ post.body | truncatechars:500 }}</p>
+            <h3>Video Uploader</h3>
+            <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Upload"/>
+            </form>
+            <video width="400 controls"><source src="{{ MEDIA_URL }}{{ videofile }}" type="video/mp4"></video>
             <a href="{% url 'detail' post.id %}" class ="btn btn-info">Continue Reading</a>
             {% if user.is_authenticated %} 
                 {% if user.id == post.author.id %}
