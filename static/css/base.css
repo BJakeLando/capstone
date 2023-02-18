@@ -4,7 +4,7 @@
 }
 
 #postBody {
-    background-color: rgb(3, 160, 98);
+    background-color: rgb(118, 210, 173);
     color: black;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -31,23 +31,16 @@ posts h1 {
 }
 
 .homeBody {
-    background-color: rgb(124, 120, 120);
+    background-color: rgb(242, 146, 57);
     color: white;
 }
 
 .homeTitle {
     padding: 25px;
-    font-size: 75px;
-    font-family:monospace;
-    text-decoration: underline;
+    font-size: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     width: 100%;
     text-align: center;
-}
-
-.weekly {
-
-    color: lightskyblue;
-    font-family: cursive;
 }
 
 .list-group-item {
@@ -55,14 +48,13 @@ posts h1 {
 }
 
 #profileBody{
-    background-color: rgb(125, 126, 126);
+    background-color: rgb(156, 220, 220);
 }
 #bl{
-    font-size: 50px;
-    text-decoration: underline;
+    font-size: 30px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 100%;
-    padding: 50px 50px 50px 450px;
+    padding: 25px 25px 25px 400px;
     color:rgb(222, 231, 228);
 }
 
@@ -70,17 +62,15 @@ posts h1 {
     border-radius: 50%;
 }
 #follows{
-    background-color: cadetblue;
-    margin-right: 25px;
+    background-color: rgb(145, 215, 181);
 }
 #followed{
-    background-color: cadetblue;
+    background-color: rgb(145, 215, 181);
 }
 
 #peepTitle {
-    padding-left: 25px;
-    font-size: 30px;
-    font-family:fantasy;
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     letter-spacing: 1px;
-    color: lightskyblue;
+    color: rgb(11, 16, 19);
 }

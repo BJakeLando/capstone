@@ -5,7 +5,7 @@ class PeepForm(forms.ModelForm):
     body = forms.CharField(required=True, 
         widget=forms.widgets.Textarea(
             attrs={
-                "placeholder": "Enter your DOL Peep here",
+                "placeholder": "What am I up to today?",
                 "class": "form-control",
             }
             ),

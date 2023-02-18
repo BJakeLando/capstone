@@ -7,9 +7,9 @@
 <body class="homeBody">
     
 <div class ="container">
-<h1><u>Posts</u></h1>
+<h1><u>Public Blog Posts:</u></h1>
 {% for post in post_list %}
-    <div class ="card">
+    <div class ="card" style ="width: 80%;">
         <div class ="card-body">
             <h5 class = "card-title">{{ post.title }}</h5>
             <h6 class="card-subtitle mb-2">{{ post.subtitle }}</h6>
