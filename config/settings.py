@@ -134,3 +134,5 @@ mimetypes.add_type("text/css", ".css", True)
 
 MEDIA_ROOT = '/media'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
