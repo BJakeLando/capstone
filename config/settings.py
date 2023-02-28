@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'posts',
     'pages',
     'wishes',
+    'vlog',
 ]
 
 MIDDLEWARE = [
@@ -133,5 +134,5 @@ LOGIN_REDIRECT_URL = "profileHome"
 
 mimetypes.add_type("text/css", ".css", True)
 
-MEDIA_ROOT = '/media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

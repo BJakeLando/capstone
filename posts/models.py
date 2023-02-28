@@ -14,7 +14,7 @@ class Status(models.Model):
 
 class Video(models.Model):
     name = models.CharField(max_length=500)
-    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="")
+    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="posts_video")
 
     def __str__(self):
         return str(self.videofile)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ video.name }}{% endblock title %}
+
+{% block content %}
+current user: {{ user.id }}
+<h1>{{ video.name }}</h1>
+<small>Created by: {{ video.author }} | Created on: {{ video.created_on }}</small>
+<p>{{ video.description }}</p>
+
+{% if user.is_authenticated %}
+    {% if user.id == video.author.id %}
+<p>
+    <a href="{% url 'edit' video.id %}" class = "btn btn-primary">Edit</a>
+</p>
+<p><a href="{% url 'delete' video.id %}" class = "btn btn-danger">Delete</a>
+</p>
+    {% endif %}
+{% endif %}
+
+{% endblock content %}

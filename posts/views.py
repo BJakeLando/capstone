@@ -9,21 +9,12 @@ from django.contrib.auth.mixins import (
     UserPassesTestMixin,
 )
 from django.urls import reverse_lazy
-from .models import Post, Status 
-from .forms import VideoForm
-from .models import Video
+from .models import (Post, 
+                    Status,)
+
 from django.shortcuts import render
 
 
-
-def showvideo(request):
-    lastvideo= Video.objects.last()
-    videofile= lastvideo.videofile
-    form= VideoForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-    context= {'videofile': videofile,'form': form}
-    return render(request, 'home.html', context)
 
 class PostListView(ListView):
     template_name = 'posts/list.html'
@@ -79,3 +70,11 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     def test_func(self):
         post_obj = self.get_object()
         return self.request.user == post_obj.author
+
+
+
+    
+
+
+    
+        
