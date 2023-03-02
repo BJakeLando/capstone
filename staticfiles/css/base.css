@@ -31,7 +31,7 @@ posts h1 {
 }
 
 .homeBody {
-    background-color: rgb(242, 146, 57);
+    background-color: lightsalmon;
     color: white;
 }
 
@@ -73,4 +73,7 @@ posts h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     letter-spacing: 1px;
     color: rgb(11, 16, 19);
+}
+.profileImage img{
+    border-radius: 50%;
 }

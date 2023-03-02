@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'posts',
     'pages',
     'wishes',
     'vlog',
@@ -134,12 +133,5 @@ LOGIN_REDIRECT_URL = "profileHome"
 
 mimetypes.add_type("text/css", ".css", True)
 
-<<<<<<< HEAD
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-=======
-MEDIA_ROOT = '/media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
->>>>>>> a27bfd9daabf4777b0a0f09fb5e1e5a8415596ef
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/upload/')
