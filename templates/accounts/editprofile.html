@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+<h3>Current Profile Image: </h3>
+<br>
+<img src='/static/upload/{{ profile.profile_image }}' alt="">
+<br><br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Upload" class = "btn btn-success">
+</form>
+
+{% endblock content %}

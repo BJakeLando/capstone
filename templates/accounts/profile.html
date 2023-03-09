@@ -3,14 +3,15 @@
 
 {% block content %} 
 {% if profile %}
-<body id="profileBody">
+<body class="profileBody">
     <div class="container text-center">
         <div class="row">
             <div class="col-8">
                 <h1 id="bl">{{ profile.user.username }}'s Profile</h1>
                 <div class="col-md-4">
-                    <img src="{% static 'img/about.jpg' %}" class="card-img" alt="profile_image">
+                    <img src='/static/upload/{{ profile.profile_image }}' type='image'>
                     <div>
+                        <button><a href="{% url 'editProfile' profile.user.id %}" >Change Profile Image</a></button>
                         <br/><br/><br/>
                         {% if form %}
                             <form method="POST">
@@ -25,7 +26,7 @@
                 <br/>
             {% if peeps %}
                 {% for peep in peeps %}
-                    <div class="alert alert-dark" role ="alert">
+                    <div class="alert alert-light" style="color: black" role ="alert">
                         {{ peep.body }}<br/>
                         <small class="text-muted">
                             ({{ peep.created_at }}) </small><br/>

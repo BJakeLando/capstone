@@ -9,10 +9,10 @@
 {% if profiles %}
     {% for profile in profiles %}
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <div id="profileCard"class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-            <img src="{% static 'img/profile.jpg' %}" class="card-img" id="profileImage" alt="profile image"><form action=""method="POST">
+            <img src='/static/upload/{{ profile.profile_image }}'  class="card-img" type="image"><form action=""method="POST">
                 {%csrf_token %}
                 {{ form.as_p }}
             </form>

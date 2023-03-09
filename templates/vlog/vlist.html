@@ -5,31 +5,22 @@
 
 {% block content %}
 <body class="homeBody">
-    
-<div class ="container">
-<h1><u>Public Blog Posts:</u></h1>
+
+<div class="videoContainer">
+    <h1 id="vlogTitle"><u>Public Blog Posts:</u></h1>
 
     {% for video in video_list %}
-    <div class="videoPlayer">
-        <div class="mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <video width='400' controls src='/static/upload/{{ video.videofile }}' type='video/mp4'>
-                </video>
-                <br><br>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ video.author }}</h5>
-                    <label style="padding-top: 200px;"><small class="text-muted">Created on: {{ video.created_on }}</small></label>
-                </div>
+        <div class="video-grid">       
+            <video width='800' controls src='/static/upload/{{ video.videofile }}' type='video/mp4'>
+            </video>
+            <div class="card-body">
+                <h5 class="card-title">{{ video.author }}</h5>
+                <label><small class="text-muted">Created on: {{ video.created_on }}</small></label>
+                <p>{{ video.description }}</p>
+            </div>   
         </div>
-    </div>
     {% endfor %}
 
 </div>
-
 </body>
-<!-- <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpbh-mt'},{'server':'p3plmcpnl487010'},{'id':'8437534'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script>
-<script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script> -->
 {% endblock content %}

@@ -19,9 +19,8 @@ class PeepForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('user', 'profile_image',)
+        fields = ['profile_image',]
         labels = {
-            'user': '',
             'profile_image': 'add image',
 
         }

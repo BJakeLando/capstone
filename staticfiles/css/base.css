@@ -3,6 +3,12 @@
     background-color: rgb(203, 222, 228);
 }
 
+#postBody {
+    background-color: rgb(118, 210, 173);
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .card {
     width: 30%;
     margin: 2rem auto;
@@ -25,7 +31,7 @@ posts h1 {
 }
 
 .homeBody {
-    background-color: lightsalmon;
+    background-color: rgb(81, 129, 70);
     color: white;
 }
 
@@ -42,7 +48,7 @@ posts h1 {
 }
 
 #profileBody{
-    background-color: rgb(156, 220, 220);
+    background-color: rgb(158, 219, 206);
 }
 #bl{
     font-size: 30px;
@@ -71,9 +77,21 @@ posts h1 {
 .profileImage img{
     border-radius: 50%;
 }
+/* Vlog Template */
+.video-grid {
+    --gap: 16px; 
+    --num-cols: 4;
+    --row-height: 300px;
 
-/* Video Player */
-.videoPlayer {
-    width: 100%;
-    padding: 200px;
+    box-sizing: border-box;
+    padding: var(--gap);
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
 }
+.video-grid > video {
+    width: 100%;
+    height: 100%;
+}
+/* Video Player */

@@ -12,11 +12,12 @@ from django.shortcuts import render
 class VideoListView(ListView):
     template_name = 'vlog/vlist.html'
     model = Video
+
     def showvideo(request):
         form= VideoForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             form.save()
-        context= {'lastvideo': Video.objects.all(),
+        context= {'lastvideo': Video.objects.all().order_by("-created_on"),
                 'form': form
                 }
         return render(request, 'vlog/vlist.html', context)
@@ -24,7 +25,7 @@ class VideoListView(ListView):
 class PostVideoView(CreateView):
     template_name = 'vlog/video.html'
     model = Video 
-    fields = ['name', 'videofile', 'author',]
+    fields = ['name', 'videofile', 'author', 'description']
     success_url = reverse_lazy('vlist')
 
     def videoPost(self, request):

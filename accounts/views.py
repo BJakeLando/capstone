@@ -1,10 +1,12 @@
 from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render,redirect
 from .models import Profile, Peep
 from django.contrib import messages
 from .forms import PeepForm, ProfileForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def profileHome(request):
     if request.user.is_authenticated:
@@ -23,7 +25,24 @@ def profileHome(request):
         peeps = Peep.objects.all().order_by("-created_at")
         return render(request, 'accounts/profileHome.html', {"peeps": peeps})
     
-    
+class EditProfileView(LoginRequiredMixin, UpdateView):
+    template_name ="accounts/editprofile.html"
+    model = Profile
+    fields = ["profile_image"]
+
+    success_url = reverse_lazy('vlist')
+
+    def updateProfile(self, request):
+        form = ProfileForm(request.POST, request.FILES)
+
+        context = {
+            'form': form
+        }
+        if form.is_valid():
+            form.save()
+
+        return render(request, 'vlog/vlist.html', context)
+
 class SignupView(CreateView):
     form_class = UserCreationForm
     template_name= "registration/signup.html"
@@ -50,7 +69,7 @@ def profile(request, pk):
                     peep.user = request.user
                     peep.save()
                     messages.success(request, ("Your Peep has been posted!"))
-                    return redirect('profiles')
+                    return redirect('profileHome')
             
         # Post Form Logic
         if request.method == 'POST':
@@ -66,7 +85,7 @@ def profile(request, pk):
             current_user_profile.save()
 
         peeps = Peep.objects.all().order_by("-created_at")
-        return render(request, "accounts/profile.html", {'profile': profile, "peeps": peeps,'form': form})
+        return render(request, "accounts/profile.html", {'profile': profile, "peeps": peeps,'form': form,})
     else:
         messages.success(request, ("you must be logged in to view this page"))
         return redirect('home')
